@@ -4,6 +4,7 @@ syntax = "proto3";
 message SerialRequest {
   optional bool request_config = 1;
   optional ConfigPb config = 2;
+  optional bool enter_stop_mode = 3;
 }
 
 message SerialResponse {
