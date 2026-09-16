@@ -30,6 +30,14 @@ enum MotionSensitivity {
   MOTION_SENSITIVITY_THREE = 3; // 2M + 1M + 1M
 }
 
+enum TemperatureSensorError {
+  TEMPERATURE_SENSOR_ERROR_UNSPECIFIED = 0;
+  TEMPERATURE_SENSOR_ERROR_NONE = 1;
+  TEMPERATURE_SENSOR_ERROR_NOT_INITIALIZED = 2;
+  TEMPERATURE_SENSOR_ERROR_INVALID_CALIBRATION = 3;
+  TEMPERATURE_SENSOR_ERROR_ADC_ERROR = 4;
+}
+
 // Roughly follows semantic versioning
 // TODO: more precisely define what these mean.
 message HardwareVersion {
@@ -99,6 +107,9 @@ message StatusPb {
   // Raw ambient light sensor value, in 1/4 Lux.
   optional uint32 ambient_light_value = 4;
 
-  // Temperature of the MCU, in degrees Celsius.
-  optional int32 temperature_celsius = 5;
+  // Temperature of the MCU, in decicelsius (0.1 deg C).
+  optional int32 temperature_decicelsius = 5;
+
+  // Temperature sensor error, for debugging.
+  optional TemperatureSensorError temperature_error = 6;
 };
